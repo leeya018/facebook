@@ -36,7 +36,14 @@ if ($conn->connect_error) {
 // }
 
 
-$user = $_POST["REQUEST_METHOD"];
+
+$user = $_POST["userName"];
+
+$password = $_POST["password"];
+
+if(empty($user) || empty($password)){
+	die("user or password is not init");
+}
 
 $sql_add_user = "INSERT INTO users (user,password) VALUES (?,?)";
 $stmt = $conn->prepare($sql_add_user);
