@@ -1,4 +1,5 @@
 <?php
+//data we need to connect to DB
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -11,61 +12,30 @@ if ($conn->connect_error) {
 	die("Connection failed: " . $conn->connect_error);
 } 
 
-// // Create database
-// $sql = "CREATE DATABASE myDB";
-// if ($conn->query($sql) === TRUE) {
-// 	echo "Database created successfully";
-// } else {
-// 	echo "Error creating database: " . $conn->error;
-// }
-
-//create table users
-// $sql_create_users = "CREATE TABLE users(
-// id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-// user varchar(30) NOT NULL,
-// password varchar(30) NOT NULL,
-// reg_date TIMESTAMP
-// )";
-
-
-// if($conn->query($sql_create_users) == TRUE){
-// 	echo "table user created successfully";
-// }
-// else{
-// 	echo "cannot creatre TABLE";
-// }
-
-
-
+//userName from the html form (input text)
 $user = $_POST["userName"];
-
+//password from the html form (input text)
 $password = $_POST["password"];
-
+//check that we init fields in the html form
 if(empty($user) || empty($password)){
-	die("user or password is not init");
+	die("user or password is not init");//end the script
+}
+//query for fetching the row in table witch fits to user and password we enter
+$sql_check_user_pass = "select user,password FROM users WHERE user = '$user' && password='$password'";
+//operate the query
+$result = $conn->query($sql_check_user_pass);
+//check that we got a rows from table
+if($result->num_rows > 0){
+	while($row = $result->fetch_assoc()) {//print rows
+		echo "user: " . $row["user"]. " - pass: " . $row["password"].  "<br>";
+		
+	}
+}
+else{
+	echo "there is 0 records";
 }
 
-$sql_add_user = "INSERT INTO users (user,password) VALUES (?,?)";
-$stmt = $conn->prepare($sql_add_user);
-$stmt->bind_param("ss" , $user , $password);
 
-
-
-// $user = "leeya";
-// $password = "1234";
-// $stmt->execute();
-
-// $user = "rennana";
-// $password = "333";
-// $stmt->execute();
-
-// $user = "roni";
-// $password = "grew4432432";
-// $stmt->execute();
-
-echo "new user added to users table";
-
-$stmt->close();
-
-$conn->close();
+$result->close();//close result
+$conn->close();//close connection
 ?>
