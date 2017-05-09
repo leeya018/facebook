@@ -13,7 +13,6 @@
 		<input type="submit" name="submit" value="login">
 
 
-		<?php include 'glob.php'; if($_COOKIE !== []){echo $_COOKIE[$cookiePassword];}?>
 
 
 		<?php 
