@@ -1,4 +1,6 @@
 <?php
+include 'glob.php';
+echo "login.php : cookieUser test : " . $cookieUser . "<br>";
 //data we need to connect to DB
 $servername = "localhost";
 $username = "root";
@@ -28,7 +30,10 @@ $result = $conn->query($sql_check_user_pass);
 if($result->num_rows > 0){
 	while($row = $result->fetch_assoc()) {//print rows
 		echo "user: " . $row["user"]. " - pass: " . $row["password"].  "<br>";
-		
+		 $cookieUserNameVal = $row["user"];
+		 $cookiePasswordVal = $row["password"]; 
+		setcookie($cookieUser,$cookieUserNameVal,time() + (86400 * 30));
+		setcookie($cookiePassword,$cookiePasswordVal,time() + (86400 * 30));
 	}
 }
 else{
