@@ -4,4 +4,5 @@ global $cookiePassword;
 
  $cookieUser = "user";
  $cookiePassword = "password";
+
  ?>

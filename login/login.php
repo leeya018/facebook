@@ -43,4 +43,14 @@ else{
 
 $result->close();//close result
 $conn->close();//close connection
+
+
+//get the user profile:
+
+// include 'globFunc.php';
+// test();
+include 'getProfileByUserName.php';//change posistion of this file to the same folder (getProfileByUserName.php);
+echo "ssss";
+getProfileByUserName();
+echo "qqq";
 ?>
