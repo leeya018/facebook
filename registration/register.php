@@ -22,10 +22,13 @@ $firstName = $_POST["firstName"];
 $lastName = $_POST["lastName"];
 $userName = $_POST["userName"];
 $email = $_POST["email"];
-$picture = $_FILES["picture"];
+// $picture = $_FILES["picture"]["name"]; // this I alter only to chek it 
+$picture = $conn->real_escape_string($_FILES["picture"]["name"]); // this I alter only to chek it 
 $password = $_POST["password"];
 print_r($_POST);
+echo "file_get_contents" . "<br>";
 print_r($picture);
+
 
 $stmt_add_profile = $conn->prepare($sql_add_profile);
 $stmt_add_profile->bind_param("ssssb",$firstName,$lastName,$userName,$email,$picture);
@@ -53,7 +56,7 @@ $stmt_add_user->close();
 $conn->close();
 
 
-header('Location: /php_stuff/facebook/login/index.php');//change the location of my view page to the one I mettion in the header 
+// header('Location: /php_stuff/facebook/login/index.php');//change the location of my view page to the one I mettion in the header 
 
 
 ?>

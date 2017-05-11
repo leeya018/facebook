@@ -4,7 +4,7 @@
 
 <html>
 <head>
-	<title></title>
+	<title>login</title>
 </head>
 <body>
 	<form method="post" action="login.php" enctype="multipart/form-data">

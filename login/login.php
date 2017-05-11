@@ -32,12 +32,12 @@ if($result->num_rows > 0){
 		echo "user: " . $row["user"]. " - pass: " . $row["password"].  "<br>";
 		 $cookieUserNameVal = $row["user"];
 		 $cookiePasswordVal = $row["password"]; 
-		setcookie($cookieUser,$cookieUserNameVal,time() + (86400 * 30));
-		setcookie($cookiePassword,$cookiePasswordVal,time() + (86400 * 30));
+		setcookie($cookieUser,$cookieUserNameVal,time() + (86400 * 30), '/');//forth parameten make the cookie avaliable from all  parts of the site
+		setcookie($cookiePassword,$cookiePasswordVal,time() + (86400 * 30), '/');
 	}
 }
 else{
-	echo "there is 0 records";
+	echo "your userName or password are incorrect";
 }
 
 
@@ -45,12 +45,15 @@ $result->close();//close result
 $conn->close();//close connection
 
 
+header('Location: /php_stuff/facebook/home/index.php');//change the location of my view page to the one I mettion in the header 
 //get the user profile:
 
-// include 'globFunc.php';
-// test();
-include 'getProfileByUserName.php';//change posistion of this file to the same folder (getProfileByUserName.php);
-echo "ssss";
-getProfileByUserName();
-echo "qqq";
+// -> nove this to the profile section
+// include 'getProfileByUserName.php';//change posistion of this file to the same folder (getProfileByUserName.php);
+// echo "ssss";
+// getProfileByUserName();
+// echo "qqq";
+
+
+
 ?>
