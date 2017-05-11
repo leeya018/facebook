@@ -53,7 +53,7 @@ $stmt_add_user->close();
 $conn->close();
 
 
-
+header('Location: /php_stuff/facebook/login/index.php');//change the location of my view page to the one I mettion in the header 
 
 
 ?>
