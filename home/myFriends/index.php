@@ -5,25 +5,30 @@
 </head>
 <body>
 	<?php 
-	// echo "test";
 	include 'getFriendsByUserName.php';
 	$friendRows= getFriendsByUserName();
-	// print_r($friendRows);
-	// foreach ($friendRows as $key => $value) {
-	// 	echo $value;
-	// }
-	echo "=====================";
+
 	?>
 	<div>
 		<ul>
-			<?php foreach ($friendRows as $key => $value) { ?>
+			<?php 
+			$str = "";
+			foreach ($friendRows as $key => $value) { ?>
+			<?php foreach ($value as $key1 => $value1) { 
+				$str = $str . " " . $value1;
+				?>
+				<?php
+			} ?>
 			<li>
-			<input type="submit" name="" value="<?php echo $value; ?>">
+			<a href=""><?php echo $str; ?></a>
 			</li>
-			<?php } ?>
-		</ul>
-	</div>
+			<?php 
+			$str = "";
+		} ?>
+	</ul>
+</div>
 </body>
 </html>
+
 
 

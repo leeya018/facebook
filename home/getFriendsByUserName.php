@@ -1,10 +1,5 @@
 <?php 
 
-
-
-
-
-
 function getFriendsByUserName(){
 	$friends= array(); // this var gets init, and this method returns it back
 
@@ -27,19 +22,17 @@ function getFriendsByUserName(){
 	$userName  = $_COOKIE[$cookieUser];
 	// echo "$userName : " . $_COOKIE[$cookieUser];
 
-$sql = "select friendUserName FROM friends WHERE userName = '$userName'"; // need an init $user
+// $sql = "select friendUserName FROM friends WHERE userName = '$userName'"; // need an init $user
+
+$sql = "select firstName , lastName from profiles where userName in 
+	(select friendUserName FROM friends WHERE userName = '$userName')"; // need an init $user
 
 $result = $conn->query($sql);
 
 if($result->num_rows > 0){
 	while($row = $result->fetch_assoc()) {//print rows
-
-		// echo "userName: " . $row["friendUserName"];
-		$friends[] = $row["friendUserName"];
-
+		$friends[]  = array($row["firstName"], $row["lastName"]);
 	}
-
-	// $friends[] = "MICKEL";
 }else{
 	echo "there is 0 records";
 }
