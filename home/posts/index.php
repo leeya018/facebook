@@ -5,25 +5,48 @@
 <html>
 <head>
 	<title></title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
 </head>
 <body>
 	<?php
 	include 'addPostByUser.php';
 
 
-	if($_SERVER["REQUEST_METHOD"] == "POST"){
-		echo "===========================";
-		addPostByUser();
+	if($_SERVER["REQUEST_METHOD"] == "POST" ){
+		if($_POST["postMessage"] !== ""){
+			echo "===========================";
+			addPostByUser();
+
+		}
+
+		
 
 	}
 	
 
 	?>
+
+
+
+
 	<form method="POST"  enctype="multipart/form-data">
 		<textarea name="postMessage"></textarea>
-		<input type="submit" name="submit" value="post">
+		<input type="submit" name="submit" value="post" >
 
 	</form>
+
+<script type="text/javascript">
+	   $(document).ready(function(){
+
+
+  });
+	   function addRow(){
+
+	   }
+
+
+</script>
 
 	<?php
 	include 'getPosts.php';
@@ -56,11 +79,11 @@
 				// print_r($pieces);
 				?>
 
-				<a href="/php_stuff/facebook/home/myFriends/showFriendProfile/index.php"><?php echo $pieces[0]; ?></a>
+				<a href="/php_stuff/facebook/home/myFriends/showFriendProfile/index.php?PID=<?php echo $pieces[0]; ?>"><?php echo $pieces[0]; ?></a>
 				<p>
 					<?php 
-						unset($pieces[0]); 
-	$pieces = array_values($pieces);
+					unset($pieces[0]); 
+					$pieces = array_values($pieces);
 					foreach ($pieces as $key => $value) {
 						echo $value . " ";
 					}

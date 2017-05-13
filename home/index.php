@@ -33,7 +33,7 @@
            <li><a href="#myProfile" data-toggle="tab">my Profile</a></li>
            <!-- class="active" - in  the li tag is active but make somne problems -->
            <li><a href="#posts" data-toggle="tab">posts</a></li>
-           <li><a href="#searchFriends" data-toggle="tab">search friend</a></li>
+           <li><a href="#searchFriend" data-toggle="tab">search friend</a></li>
            <li><a href="#myFriends" data-toggle="tab">my friend</a></li>
          </ul>
          <div class="tab-content" id="tabs">
@@ -41,13 +41,19 @@
             <?php include 'myProfile/index.php';?>
           </div>
           <div class="tab-pane" id="posts">
-             <?php include 'posts/index.php';?>
-          </div>
-          <div class="tab-pane" id="searchFriends">...Content3...</div>
-          <div class="tab-pane" id="myFriends">
-            <?php include 'myFriends/index.php';?>
-          </div>
+           <?php include 'posts/index.php';?>
+
+
         </div>
+        <div class="tab-pane" id="searchFriend">
+          <?php include 'searchFriend/index.php';?>
+
+    
+      </div>
+      <div class="tab-pane" id="myFriends">
+        <?php include 'myFriends/index.php';?>
+      </div>
+    </div>
 
 <!--       <h1>try to change span</h1>
   <span id="spanCheck"></span> -->
@@ -56,17 +62,14 @@
 
 
    $(document).ready(function(){
-    activaTab('aaa');
+
+    activaTab('searchFriend');
 
   });
 
    function activaTab(tab){
     $('.nav-tabs a[href="#' + tab + '"]').tab('show');
-  };
+  }
 </script>
 </body>
 </html>
-
-
-
-            <!-- <li class="active"><a href="/php_stuff/facebook/post/index.php">posts</a></li> -->

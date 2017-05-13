@@ -1,6 +1,5 @@
 <?php 
-
-function getFriendsByUserName(){
+function searchFriendByName(){
 	$friends= array(); // this var gets init, and this method returns it back
 
 	$directoryGlob =  $_SERVER['DOCUMENT_ROOT'] . "/php_stuff/facebook/login/glob.php";
@@ -19,25 +18,18 @@ function getFriendsByUserName(){
 		die("failed connection" . $conn->error);
 	}
 
-	$userName  = $_COOKIE[$cookieUser];
-	// echo "$userName : " . $_COOKIE[$cookieUser];
+	$searchFriend  = $_POST["searchFriend"];
 
-$sql = "select friendUserName FROM friends WHERE userName = '$userName'"; // need an init $user
-
-// $sql = "select firstName , lastName from profiles where userName in 
-// 	(select friendUserName FROM friends WHERE userName = '$userName')"; // need an init $user
-
-
+$sql = "select userName from profiles where userName = '$searchFriend'";
 
 $result = $conn->query($sql);
 
 if($result->num_rows > 0){
 	while($row = $result->fetch_assoc()) {//print rows
-		// $friends[]  = array($row["firstName"], $row["lastName"]);
-	$friends[]  = $row["friendUserName"];
+		$friends[]  = $row["userName"];
 	}
 }else{
-	echo "there is 0 records";
+	echo "no friends on the list";
 }
 
 
@@ -48,5 +40,4 @@ $conn->close();
 return $friends;
 
 }
-
 ?>

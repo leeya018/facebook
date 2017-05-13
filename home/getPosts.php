@@ -23,7 +23,7 @@ function getPosts(){
 
 
 	$sql = "select userName, postMessage from posts where userName in 
-	(select friendUserName FROM friends WHERE userName = '$userName')"; // need an init $user
+	(select friendUserName FROM friends WHERE userName = '$userName') ORDER BY reg_date"; // need an init $user
 
 	$result = $conn->query($sql);
 
