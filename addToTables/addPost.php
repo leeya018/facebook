@@ -11,8 +11,8 @@ if($conn->error){
 	die("failed connection" . $conn->error);
 }
 
-$userName = "leeya";
-$postMessage = "bye bye";
+$userName = "roniya";
+$postMessage = "hello people";
 
 
 $sql_add_post = "INSERT INTO posts (userName,postMessage) VALUES (?,?)";

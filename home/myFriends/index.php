@@ -22,20 +22,13 @@
 			} ?>
 			<li>
 				<?php 
-				$strHref = str_replace(" ","_",$str); // replace the " " char with "_" char for the url
-				$len = strlen($strHref);//return the $strHref length
-				$strHref = substr($strHref,0,$len-1); // cut the last "_" charchter fromthe string
+				$strHref = str_replace(" ","_",$str);
+				$len = strlen($strHref);
+				$strHref = substr($strHref,0,$len-1);
 				?>
-				<?php 
-				echo '<a href="' . $strHref . '">'
-				// strHref we need to see it in the url 
-				?>
-				<?php echo $str ?>
-				<!-- show the str as somthing to click on  -->
-				<?php 
-				'</a>';
 
-				?>
+				<!-- echo '<a href="' . $folder_path . '">Link text</a>'; -->
+				<a href="/php_stuff/facebook/home/myFriends/showFriendProfile/index.php"><?php echo $str; ?></a>
 			</li>
 			<?php 
 			$str = "";

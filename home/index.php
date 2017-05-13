@@ -40,7 +40,9 @@
            <div class="tab-pane" id="myProfile">
             <?php include 'myProfile/index.php';?>
           </div>
-          <div class="tab-pane" id="posts">...Content2...</div>
+          <div class="tab-pane" id="posts">
+             <?php include 'posts/index.php';?>
+          </div>
           <div class="tab-pane" id="searchFriends">...Content3...</div>
           <div class="tab-pane" id="myFriends">
             <?php include 'myFriends/index.php';?>
