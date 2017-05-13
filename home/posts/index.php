@@ -8,6 +8,24 @@
 </head>
 <body>
 	<?php
+	include 'addPostByUser.php';
+
+
+	if($_SERVER["REQUEST_METHOD"] == "POST"){
+		echo "===========================";
+		addPostByUser();
+
+	}
+	
+
+	?>
+	<form method="POST"  enctype="multipart/form-data">
+		<textarea name="postMessage"></textarea>
+		<input type="submit" name="submit" value="post">
+
+	</form>
+
+	<?php
 	include 'getPosts.php';
 	$rowPosts = getPosts();
 	foreach ($rowPosts as $key => $value) {
@@ -41,6 +59,8 @@
 				<a href="/php_stuff/facebook/home/myFriends/showFriendProfile/index.php"><?php echo $pieces[0]; ?></a>
 				<p>
 					<?php 
+						unset($pieces[0]); 
+	$pieces = array_values($pieces);
 					foreach ($pieces as $key => $value) {
 						echo $value . " ";
 					}
