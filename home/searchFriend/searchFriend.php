@@ -20,13 +20,13 @@ function searchFriendByName(){
 
 	$searchFriend  = $_POST["searchFriend"];
 
-$sql = "select userName from profiles where userName = '$searchFriend'";
+	$sql = "select userName from profiles where userName = '$searchFriend'";
 
-$result = $conn->query($sql);
+	$result = $conn->query($sql);
 
-if($result->num_rows > 0){
+	if($result->num_rows > 0){
 	while($row = $result->fetch_assoc()) {//print rows
-		$friends[]  = $row["userName"];
+		$friends[]  = $row["userName"];	
 	}
 }else{
 	echo "no friends on the list";
